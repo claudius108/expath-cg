@@ -180,6 +180,19 @@
 			var {
 			font-style: italic;
 			}
+			
+			#table-1 {
+				border: 1px solid black;
+			}
+			
+			#table-1 th {
+				text-align: center;
+				border: 1px solid black;	
+			}
+			#table-1 td {
+				border: 1px solid black;
+				padding: 5px;
+			}			
 		</style>
 	</head>
 	<body>
@@ -198,7 +211,9 @@
 				good practices inferred from [[!xpath-functions-31]].
 			</p>
 		</section>
-		<section id="sotd" />
+
+	    <section id="sotd">
+	    </section>
 
 		<section id="introductory">
 			<h2>Introduction</h2>
@@ -254,6 +269,10 @@
 					.
 				</p>
 			</section>
+		</section>
+		<section>
+			<h2>Cryptographic Services</h2>
+			
 		</section>
 		<!-- <div1> -->
 		<!-- <head>Cryptographic Service Providers</head> -->
@@ -374,86 +393,183 @@
 			<h2>Integrity and Authentication of Data</h2>
 			<section>
 				<h3>
-					The
 					<dfn>crypto:hash</dfn>
-					function
 				</h3>
-				<p>
-					This function generates a "message digest" of the input data, by using a cryptographic algorithm.</p>
-				<div class="proto">
-					<table class="proto">
-						<tbody>
-							<tr>
-								<td rowspan="3">
-									<code class="function">crypto:hash</code>
-									(
-								</td>
-								<td>
-									<code class="arg">$data</code>
-								</td>
-								<td>
-									<code class="as"> as </code>
-									<code class="type">xs:anyAtomicType?</code>
-									,
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<code class="arg">$algorithm </code>
-								</td>
-								<td>
-									<code class="as"> as </code>
-									<code class="type">xs:string</code>
-									)
-									<code class="as"> as </code>
-									<code class="return-type">xs:string</code>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="proto">
-					<table class="proto">
-						<tbody>
-							<tr>
-								<td rowspan="3">
-									<code class="function">crypto:hash</code>
-									(
-								</td>
-								<td>
-									<code class="arg">$data</code>
-								</td>
-								<td>
-									<code class="as"> as </code>
-									<code class="type">xs:anyAtomicType?</code>
-									,
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<code class="arg">$algorithm </code>
-								</td>
-								<td>
-									<code class="as"> as </code>
-									<code class="type">xs:string</code>
-									,
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<code class="arg">encoding </code>
-								</td>
-								<td>
-									<code class="as"> as </code>
-									<code class="type">xs:string</code>
-									)
-									<code class="as"> as </code>
-									<code class="return-type">xs:string</code>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+				<dl>
+					<dt class="label">Summary</dt>
+					<dd>
+						<p>This function generates a "message digest" of the input data, by using a cryptographic algorithm.</p>
+					</dd>
+					<dt class="label">Signatures</dt>
+					<dd>
+						<div class="proto">
+							<table class="proto">
+								<tbody>
+									<tr>
+										<td rowspan="3">
+											<code class="function">crypto:hash</code>
+											(
+										</td>
+										<td>
+											<code class="arg">$data</code>
+										</td>
+										<td>
+											<code class="as"> as </code>
+											<code class="type">xs:anyAtomicType?</code>
+											,
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<code class="arg">$algorithm </code>
+										</td>
+										<td>
+											<code class="as"> as </code>
+											<code class="type">xs:string</code>
+											)
+											<code class="as"> as </code>
+											<code class="return-type">xs:string</code>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="proto">
+							<table class="proto">
+								<tbody>
+									<tr>
+										<td rowspan="3">
+											<code class="function">crypto:hash</code>
+											(
+										</td>
+										<td>
+											<code class="arg">$data</code>
+										</td>
+										<td>
+											<code class="as"> as </code>
+											<code class="type">xs:anyAtomicType?</code>
+											,
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<code class="arg">$algorithm </code>
+										</td>
+										<td>
+											<code class="as"> as </code>
+											<code class="type">xs:string</code>
+											,
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<code class="arg">encoding </code>
+										</td>
+										<td>
+											<code class="as"> as </code>
+											<code class="type">xs:string</code>
+											)
+											<code class="as"> as </code>
+											<code class="return-type">xs:string</code>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</dd>
+					<dt class="label">Properties</dt>
+					<dd>
+						<p>
+							This function is
+							<a title="deterministic" class="termref" data-cite="xpath-functions#dt-deterministic">
+								<span class="arrow">·</span>
+								deterministic
+								<span class="arrow">·</span>
+							</a>
+							,
+							<a title="context-independent" class="termref" data-cite="xpath-functions#dt-context-independent">
+								<span class="arrow">·</span>
+								context-independent
+								<span class="arrow">·</span>
+							</a>
+							, and
+							<a title="focus-independent" class="termref" data-cite="xpath-functions#dt-focus-independent">
+								<span class="arrow">·</span>
+								focus-independent
+								<span class="arrow">·</span>
+							</a>
+							.
+						</p>
+					</dd>
+					<dt class="label">Rules</dt>
+					<dd>
+						<p>
+							The function
+							<code>map:keys</code>
+							takes any
+							<a title="map" class="termref" href="#dt-map">
+								<span class="arrow">·</span>
+								map
+								<span class="arrow">·</span>
+							</a>
+							as its
+							<code>$map</code>
+							argument and returns the keys that are present in the map as
+							a sequence of atomic values, in
+							<a title="" class="termref" href="#">
+								<span class="arrow">·</span>
+								implementation-dependent
+								<span class="arrow">·</span>
+							</a>
+							order.
+						</p>
+						<p>
+							The function is
+							<b>non-deterministic with respect to ordering</b>
+							(see
+							<a href="#properties-of-functions">
+								<b>1.7.4 Properties of functions</b>
+							</a>
+							). This means that two calls with the same argument
+							are not guaranteed to produce the results in the same order.
+						</p>
+					</dd>
+					<dt class="label">Notes</dt>
+					<dd>
+						<p class="note">The number of items in the result will be the same as the number of
+							entries in the map, and the result sequence will contain no duplicate values.
+						</p>
+					</dd>
+					<dt class="label">Examples</dt>
+					<dd>
+						<div class="example">
+							<p>
+								The expression
+								<code>map:keys(map{1:"yes", 2:"no"})</code>
+								returns some permutation of
+								<code>(1,2)</code>
+								.
+								<em>
+									(The result is in
+									<a title="" class="termref" href="#">
+										<span class="arrow">·</span>
+										implementation-dependent
+										<span class="arrow">·</span>
+									</a>
+									order.)
+								</em>
+							</p>
+						</div>
+					</dd>
+				</dl>
+
+
+
+
+
+
+
+
 				<ul>
 					<li>
 						<code>$data</code>
@@ -485,9 +601,7 @@
 			</section>
 			<section>
 				<h3>
-					The
 					<dfn>crypto:hmac</dfn>
-					function
 				</h3>
 				<p>
 					<a data-cite="rfc2104">HMAC (Keyed-Hashing for Message Authentication)</a>
@@ -696,7 +810,7 @@
 								</td>
 								<td>
 									<code class="as"> as </code>
-									<code class="type">map(xs:string, item()+)?</code>
+									<code class="type">map(xs:string, item()+)</code>
 									)
 									<code class="as"> as </code>
 									<code class="return-type">item()*</code>
@@ -713,32 +827,32 @@
 						</p>
 					</li>
 					<li>
-						<p>???
+						<p>
 							<code>$parameters</code>
 							represent the parameters used for generating the XML digital signature. For details regarding these parameters,
-							see the table
-							<specref ref="explanations-about-parameters-parameter" />
-							and the example
-							<specref ref="example-of-parameters-parameter" />
-							below.
+							see the
+							<a href="#example-of-parameters-parameter" class="sectionRef">example</a>
+							below, and the two tables following, which 							
+							<a href="#explanations-about-parameters-parameter" class="sectionRef">table</a>
+							below 
+							and the
+.
 						</p>
 					</li>
 				</ul>
-				<div3 id="explanations-about-parameters-parameter">
-					<head>
+				<section id="explanations-about-parameters-parameter">
+					<h4>
 						Explanations about
 						<code>$parameters</code>
 						parameter
-					</head>
-					<table border="1" frame="border">
+					</h4>				
+					<table id="table-1">
 						<caption>Parameters used for generating a XML digital signature</caption>
 						<thead>
 							<tr>
 								<th>
-									Key
-									(as
-									<code>xs:string</code>
-									)
+									Key<br/>(as
+									<code>xs:string</code>)
 								</th>
 								<th>Value</th>
 								<th>Meaning</th>
@@ -753,15 +867,16 @@
 									<code>xs:string</code>
 								</td>
 								<td>
-									The canonicalization algorithm applied to the
+									<p>The canonicalization algorithm applied to the
 									<code>SignedInfo</code>
 									element prior to performing signature calculations. Possible values are given in the list
-									below. The default value is "inclusive-with-comments-1.1". If the parameter specifies an unsupported algorithm, this
-									is an error
-									<bibref ref="error.unknownAlgorithm" />
-									. (Optional)
-									<ulist>
-										<item>
+									below. The default value is "inclusive-with-comments-1.1". If the parameter specifies an unsupported algorithm, it MUST throw the error
+									<a>err:CRYPTO002</a>
+									. (This parameter is optional)
+									</p>
+									<p>List of values:</p>
+									<ul>
+										<li>
 											<p>
 												<code>inclusive-1.1</code>
 												, identifier
@@ -770,8 +885,8 @@
 												<bibref ref="xml-dig-sig-core" />
 												, section 6.5.2 Canonical XML 1.1.
 											</p>
-										</item>
-										<item>
+										</li>
+										<li>
 											<p>
 												<code>inclusive-with-comments-1.1</code>
 												, identifier
@@ -780,8 +895,8 @@
 												<bibref ref="xml-dig-sig-core" />
 												, section 6.5.2 Canonical XML 1.1.
 											</p>
-										</item>
-										<item>
+										</li>
+										<li>
 											<p>
 												<code>inclusive-1.0</code>
 												, identifier
@@ -790,8 +905,8 @@
 												<bibref ref="xml-dig-sig-core" />
 												, section 6.5.1 Canonical XML 1.0.
 											</p>
-										</item>
-										<item>
+										</li>
+										<li>
 											<p>
 												<code>inclusive-with-comments-1.0</code>
 												, identifier
@@ -800,8 +915,8 @@
 												<bibref ref="xml-dig-sig-core" />
 												, section 6.5.1 Canonical XML 1.0.
 											</p>
-										</item>
-										<item>
+										</li>
+										<li>
 											<p>
 												<code>exclusive</code>
 												, identifier
@@ -810,8 +925,8 @@
 												<bibref ref="xml-exc-c14n" />
 												, section 4. Use in XML Security.
 											</p>
-										</item>
-										<item>
+										</li>
+										<li>
 											<p>
 												<code>exclusive-with-comments</code>
 												, identifier
@@ -820,8 +935,8 @@
 												<bibref ref="xml-exc-c14n" />
 												, section 4. Use in XML Security.
 											</p>
-										</item>
-									</ulist>
+										</li>
+									</ul>
 								</td>
 							</tr>
 							<tr>
@@ -936,70 +1051,70 @@
 							</tr>
 						</tbody>
 					</table>
-				</div3>
-				<div3 id="example-of-parameters-parameter">
-					<head>
+				</section>
+				<section id="example-of-parameters-parameter">
+					<h4>
 						Example of
 						<code>$parameters</code>
 						parameter
-					</head>
-					<eg xml:space="preserve">
-	map {
-		"canonicalization-algorithm" := "inclusive-with-comments",
-	 	"digest-algorithm" := "SHA1",
-	 	"signature-algorithm" := "RSA_SHA1",
-	 	"signature-namespace-prefix" := "digsig",
-	 	"signature-type" := "enveloped",
-	 	"references" :=
-	 		( 
-				&lt;Reference xmlns="http://www.w3.org/2000/09/xmldsig#" URI=""&gt;
-					&lt;Transforms&gt;
-						&lt;Transform Algorithm="http://www.w3.org/2002/06/xmldsig-filter2"&gt;
-							&lt;XPath Filter="intersect"&gt;//ToBeSigned&lt;/XPath&gt;
-							&lt;XPath Filter="subtract"&gt;//NotToBeSigned&lt;/XPath&gt;
-							&lt;XPath Filter="union"&gt;//ReallyToBeSigned&lt;/XPath&gt;
-						&lt;/Transform&gt;
-					&lt;/Transforms&gt;
-				&lt;/Reference&gt;,
-				&lt;Reference xmlns="http://www.w3.org/2000/09/xmldsig#" URI="#id"&gt;
-					&lt;Transforms&gt;
-						&lt;Transform Algorithm="http://www.w3.org/TR/2001/10/xml-exc-c14n" /&gt;
-					&lt;/Transforms&gt;
-				&lt;/Reference&gt;
-			)
-		"key" :=
-			    "-----BEGIN RSA PRIVATE KEY-----
-			MIIEowIBAAKCAQEAhPxBGln4YOcOGOxmRYEN8nzYHYvQx+PP8GnbJ+kW4f6HvH8WMAUa2lTB6gib
-			LzJGezhqkMy8NT8ogVz8xbra3AyK/IBDzXpWtPhSxVOCo6hJfTjj7wX3E2AVN9CTUOYrS/3iSu1q
-			/6MoB6MDIj8wV0HO1ujXqEip45UgVl+xRVtU+1wiJQ7Gc8GEEyHVtK/X4joiyCEebJhFsI42Z9e4
-			aETI/XOaLszyEQeipMRlyznpRL2x0chz+yj7KuwiMqBZmPYyeWBsbldW8xREwnHEyko5GWc6wkEi
-			vgFwzKaZWo2ct3pmZ9vwXKecAxbeJbyJQl/PDfSnqcwyhL6pOaSAuQIDAQABAoIBAHo5hnR7wIb/
-			lbteetjitjjqeY8eU/OD9DfYcu6Jkth/Ia4jd/cGmhmU0O0Sn96O7KyPu5H+OfUOaWIMXt400LZy
-			aMON98NA77RAj4KBMI7OO0z2Hrgu2Vlbc+TqtJskESM04ulOsIroIAB02Ip/XSS1fS+UrbEjp9Fd
-			3GzGYp2E6IF/YtTXMiqgdrZVAoDPtxiMR/1KXuETiBkeMxPvXfgePXLi/rYBDcecmfsCEzDX8RZV
-			xLoPKFxuLaIrzdVhGVHwp88fB57OufLytmuvro71FNrFzcIO88NyDpEQVnsBadm9Ir0mb5uhYq9j
-			YV444b2Gra0/onJm7e/zRUSSJGkCgYEA67Q8gBSADrkc0UCypjnFV8WWCQJBPspb9Vnf2MJi5aYM
-			U5Sa/2H+tNoY+fJoa/eDSu1jeAn71TDcXZizihj3IT8gVdoXSncbcTulxEnaOi85Q2uKfSia16rX
-			d+MufjJ4UDC7vR/Ve+zIQOxpzBmcFO5cMnLS3mJdpWSdS7DyQpMCgYEAkG+6udsQ02GEKaJZl2mi
-			XBqe4Rh187sDCwiqSO5ItS4jUg1xF1cn1PuF2nvjztZyEsaKKYdiqekEQv3jA6gRsWFvRi/abFN3
-			zau/5M42v7H1cgU7m+FsDywhN5IRAmGfEyL/2wpKuZ6lD2qqhGkXmxqyEqgmEClyIwxJKHWiAwMC
-			gYBCJK8Bpj8VYp8SnZxEh1u4uMrUtlxG2ZSasmDdvBbyqPk2jzI7zm0ipT1zDrJ88dVXNmy+Z9bS
-			ycZdQZfIfh8DpmpVjUER9YCu8vUeszbZMx1XrRsM6lMhiGC01PzcDx+yKSrV9NP81cKQbYd27gzd
-			1tHqmkxQebwbyLNXZU1mnwKBgDpuiPsBbdgmHkJ9pIMFwCJEvrvPmoBEyuFe2wzwIUfy52UdfP/1
-			SW73ZlpSPoIB7Vo9Kc3NMJQOaaP0dC+Zgbbh9RNO7q1eQxxYfCRDbJC2nNZI2amhU4b70mBZ3jm5
-			ZpJmWV2y1zIqxRnsjBlPLraX4Sx9DBEDw2H8aWhN1oIjAoGBANc0gizRHGfOK2UASXskuO5Ueias
-			6z0V7J/m93E7wK8IQHcZXGloy8S9QSX6uAqe48ZDVCZGPxqq7TppT+P9WsdqkXqxR7M/KLa+7Y6C
-			s1tkDtD9uOJN6CsLuVjfuo4ZT5SwC7pq842aQrqJveKWKdzEorQjWKeN8OM2wzEMs0P1
-			-----END RSA PRIVATE KEY-----"	
-	}
-	</eg>
-				</div3>
-				<div3 id="explanations-about-resources-parameter">
-					<head>
+					</h4>
+					<pre class="xquery">
+map {
+	"canonicalization-algorithm" := "inclusive-with-comments",
+ 	"digest-algorithm" := "SHA1",
+ 	"signature-algorithm" := "RSA_SHA1",
+ 	"signature-namespace-prefix" := "digsig",
+ 	"signature-type" := "enveloped",
+ 	"references" :=
+ 		( 
+			&lt;Reference xmlns="http://www.w3.org/2000/09/xmldsig#" URI=""&gt;
+				&lt;Transforms&gt;
+					&lt;Transform Algorithm="http://www.w3.org/2002/06/xmldsig-filter2"&gt;
+						&lt;XPath Filter="intersect"&gt;//ToBeSigned&lt;/XPath&gt;
+						&lt;XPath Filter="subtract"&gt;//NotToBeSigned&lt;/XPath&gt;
+						&lt;XPath Filter="union"&gt;//ReallyToBeSigned&lt;/XPath&gt;
+					&lt;/Transform&gt;
+				&lt;/Transforms&gt;
+			&lt;/Reference&gt;,
+			&lt;Reference xmlns="http://www.w3.org/2000/09/xmldsig#" URI="#id"&gt;
+				&lt;Transforms&gt;
+					&lt;Transform Algorithm="http://www.w3.org/TR/2001/10/xml-exc-c14n" /&gt;
+				&lt;/Transforms&gt;
+			&lt;/Reference&gt;
+		)
+	"key" :=
+		    "-----BEGIN RSA PRIVATE KEY-----
+		MIIEowIBAAKCAQEAhPxBGln4YOcOGOxmRYEN8nzYHYvQx+PP8GnbJ+kW4f6HvH8WMAUa2lTB6gib
+		LzJGezhqkMy8NT8ogVz8xbra3AyK/IBDzXpWtPhSxVOCo6hJfTjj7wX3E2AVN9CTUOYrS/3iSu1q
+		/6MoB6MDIj8wV0HO1ujXqEip45UgVl+xRVtU+1wiJQ7Gc8GEEyHVtK/X4joiyCEebJhFsI42Z9e4
+		aETI/XOaLszyEQeipMRlyznpRL2x0chz+yj7KuwiMqBZmPYyeWBsbldW8xREwnHEyko5GWc6wkEi
+		vgFwzKaZWo2ct3pmZ9vwXKecAxbeJbyJQl/PDfSnqcwyhL6pOaSAuQIDAQABAoIBAHo5hnR7wIb/
+		lbteetjitjjqeY8eU/OD9DfYcu6Jkth/Ia4jd/cGmhmU0O0Sn96O7KyPu5H+OfUOaWIMXt400LZy
+		aMON98NA77RAj4KBMI7OO0z2Hrgu2Vlbc+TqtJskESM04ulOsIroIAB02Ip/XSS1fS+UrbEjp9Fd
+		3GzGYp2E6IF/YtTXMiqgdrZVAoDPtxiMR/1KXuETiBkeMxPvXfgePXLi/rYBDcecmfsCEzDX8RZV
+		xLoPKFxuLaIrzdVhGVHwp88fB57OufLytmuvro71FNrFzcIO88NyDpEQVnsBadm9Ir0mb5uhYq9j
+		YV444b2Gra0/onJm7e/zRUSSJGkCgYEA67Q8gBSADrkc0UCypjnFV8WWCQJBPspb9Vnf2MJi5aYM
+		U5Sa/2H+tNoY+fJoa/eDSu1jeAn71TDcXZizihj3IT8gVdoXSncbcTulxEnaOi85Q2uKfSia16rX
+		d+MufjJ4UDC7vR/Ve+zIQOxpzBmcFO5cMnLS3mJdpWSdS7DyQpMCgYEAkG+6udsQ02GEKaJZl2mi
+		XBqe4Rh187sDCwiqSO5ItS4jUg1xF1cn1PuF2nvjztZyEsaKKYdiqekEQv3jA6gRsWFvRi/abFN3
+		zau/5M42v7H1cgU7m+FsDywhN5IRAmGfEyL/2wpKuZ6lD2qqhGkXmxqyEqgmEClyIwxJKHWiAwMC
+		gYBCJK8Bpj8VYp8SnZxEh1u4uMrUtlxG2ZSasmDdvBbyqPk2jzI7zm0ipT1zDrJ88dVXNmy+Z9bS
+		ycZdQZfIfh8DpmpVjUER9YCu8vUeszbZMx1XrRsM6lMhiGC01PzcDx+yKSrV9NP81cKQbYd27gzd
+		1tHqmkxQebwbyLNXZU1mnwKBgDpuiPsBbdgmHkJ9pIMFwCJEvrvPmoBEyuFe2wzwIUfy52UdfP/1
+		SW73ZlpSPoIB7Vo9Kc3NMJQOaaP0dC+Zgbbh9RNO7q1eQxxYfCRDbJC2nNZI2amhU4b70mBZ3jm5
+		ZpJmWV2y1zIqxRnsjBlPLraX4Sx9DBEDw2H8aWhN1oIjAoGBANc0gizRHGfOK2UASXskuO5Ueias
+		6z0V7J/m93E7wK8IQHcZXGloy8S9QSX6uAqe48ZDVCZGPxqq7TppT+P9WsdqkXqxR7M/KLa+7Y6C
+		s1tkDtD9uOJN6CsLuVjfuo4ZT5SwC7pq842aQrqJveKWKdzEorQjWKeN8OM2wzEMs0P1
+		-----END RSA PRIVATE KEY-----"	
+}
+	</pre>
+				</section>
+				<section id="explanations-about-resources-parameter">
+					<h4>
 						Explanations about
 						<code>$resources</code>
 						parameter
-					</head>
+					</h4>
 					<table border="1" frame="border">
 						<caption>
 							The
@@ -1091,14 +1206,14 @@
 							</tr>
 						</tbody>
 					</table>
-				</div3>
-			</div2>
-			<div2>
-				<head>
+				</section>
+			</section>
+			<section>
+				<h3>
 					The
 					<code>crypto:validate-signature</code>
 					function
-				</head>
+				</h3>
 				<p>This function validates an XML Digital Signature.</p>
 				<eg>
 					<spec:function>crypto:validate-signature</spec:function>
@@ -1118,7 +1233,7 @@
 						</p>
 					</item>
 				</ulist>
-			</div2>			
+			</section>			
 		</section>
 
 
@@ -1133,7 +1248,7 @@
 			<h2>Scenarios of usage</h2>
 			<section>
 				<h3>Generation of OAuth signature</h3>
-				<pre>
+				<pre class="xquery">
 let $signature-base-string := "GET&amp;http%3A%2F%2Fexample.org%2Fresource%26oauth_consumer_key%3Dabcd%26
 oauth_nonce%3DXxFM1VSdB6N%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1449422427%26
 oauth_token%3Dijkl%26oauth_version%3D1.0"
@@ -1145,7 +1260,7 @@ return $signature
 			</section>
 			<section id="generation-of-aws-signature-version-4">
 				<h3>Generation of AWS Signature Version 4 signature</h3>
-				<pre>
+				<pre class="xquery">
 let $region := "us-east-1"
 let $service := 'iam'
 let $date-YYYYMMDD := '20120215'
@@ -1162,7 +1277,7 @@ return $signingKey
 			</section>
 			<section>
 				<h3>Generation of enveloped digital XML signature of a document</h3>
-				<pre>
+				<pre class="xquery">
 let $doc :=
    &lt;data&gt;
       &lt;a&gt;1&lt;/a&gt;
