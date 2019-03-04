@@ -308,28 +308,113 @@
 						</th>
 						<th>XDM Type</th>
 						<th>Value</th>
-						<th>Cryptographic Service<br />Description</th>
+						
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>$crypto:hashing</td>
+						<td>$key-pair-generation</td>
 						<td>xs:string</td>
-						<td>xs:string</td>
-						<td></td>
+						<td>Key pair generation</td>
 					</tr>
 					<tr>
-						<td>crypto:hmac</td>
+						<td>$secret-key-generation</td>
 						<td>xs:string</td>
-						<td>xs:string</td>
-						<td></td>
+						<td>Secret key generation</td>
 					</tr>
 					<tr>
-						<td></td>
+						<td>$secret-key-loading</td>
 						<td>xs:string</td>
+						<td>Secret key loading</td>
+					</tr>
+					<tr>
+						<td>$secret-key-translation</td>
 						<td>xs:string</td>
-						<td></td>
-					</tr>						
+						<td>Secret key translation</td>
+					</tr>
+					<tr>
+						<td>$key-agreement</td>
+						<td>xs:string</td>
+						<td>Key agreement</td>
+					</tr>
+					<tr>
+						<td>$hash-generation</td>
+						<td>xs:string</td>
+						<td>Hash generation</td>
+					</tr>
+					<tr>
+						<td>$mac-generation</td>
+						<td>xs:string</td>
+						<td>Message authentication code generation</td>
+					</tr>
+					<tr>
+						<td>$digital-signature-generation</td>
+						<td>xs:string</td>
+						<td>Digital signature generation</td>
+					</tr>
+					<tr>
+						<td>$digital-signature-validation</td>
+						<td>xs:string</td>
+						<td>Digital signature validation</td>
+					</tr>
+					<tr>
+						<td>$transformation-and-canonicalization</td>
+						<td>xs:string</td>
+						<td>Transformation and canonicalization</td>
+					</tr>
+					<tr>
+						<td>$symmetric-encryption</td>
+						<td>xs:string</td>
+						<td>Symmetric encryption</td>
+					</tr>
+					<tr>
+						<td>$asymmetric-encryption</td>
+						<td>xs:string</td>
+						<td>Asymmetric encryption</td>
+					</tr>
+					<tr>
+						<td>$certificate-store-creation</td>
+						<td>xs:string</td>
+						<td>Certificate store creation</td>
+					</tr>
+					<tr>
+						<td>$digital-certificat-creation</td>
+						<td>xs:string</td>
+						<td>Digital certificate creation</td>
+					</tr>
+					<tr>
+						<td>$certification-path-construction</td>
+						<td>xs:string</td>
+						<td>Certification path construction</td>
+					</tr>
+					<tr>
+						<td>$certification-path-validation</td>
+						<td>xs:string</td>
+						<td>Certification path validation</td>
+					</tr>
+					<tr>
+						<td>$keystore-creation</td>
+						<td>xs:string</td>
+						<td>Keystore creation</td>
+					</tr>
+					<tr>
+						<td>$trust-manager-creation</td>
+						<td>xs:string</td>
+						<td>Trust manager creation</td>
+					</tr>
+					<tr>
+						<td>$random-number-generation</td>
+						<td>xs:string</td>
+						<td>Random number generation</td>
+					</tr>
+					<tr>
+						<td>$smart-cards-listing</td>
+						<td>xs:string</td>
+						<td>Smart cards listing</td>
+					</tr>					
+					
+					
+					
 				</tbody>
 			</table>
 		</section>
@@ -1611,7 +1696,163 @@ map {
 				</section>
 			</section>
 		</section>
-		
+
+		<section>
+		    <h2>Digital Certificates</h2>
+		    <tr>
+		        <td>
+		            <code>digital-certificate</code>
+		        </td>
+		        <td>
+		            <code>map(xs:string, xs:string)</code>
+		        </td>
+		        <td>The digital certificate to be used for signing the references. If this parameter is missing, an auto-generated 
+					key pair will be used. The
+				components of this parameter are given in the table 
+		            <bibref ref="digital-certificate-parameter-components" /> below.(Optional)
+		        </td>
+		    </tr>
+		    <table id="digital-certificate-parameter-components" border="1" frame="border">
+		        <caption>Components of the 
+		            <code>digital-certificate</code> parameter
+		        </caption>
+		        <thead>
+		            <tr>
+		                <th>Key (as 
+		                    <code>xs:string</code>)
+		                </th>
+		                <th>Value</th>
+		                <th>Meaning</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <tr>
+		                <td>
+		                    <code>keystore-type</code>
+		                </td>
+		                <td>
+		                    <code>xs:string</code>
+		                </td>
+		                <td>The keystore type. If the type is not supported, this is an error 
+		                    <bibref ref="error.keystoreType" />.
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <code>keystore-password</code>
+		                </td>
+		                <td>
+		                    <code>xs:string</code>
+		                </td>
+		                <td>The keystore's password. If the keystore cannot be loaded or the password is incorrect, this is an error 
+		                    <bibref 
+					ref="error.readKeystore" />.
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <code>key-alias</code>
+		                </td>
+		                <td>
+		                    <code>xs:string</code>
+		                </td>
+		                <td>The alias for the key pair used for signing. If no key pair exists for this alias, this is an error 
+		                    <bibref ref="error.aliasKey"/>.
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <code>private-key-password</code>
+		                </td>
+		                <td>
+		                    <code>xs:string</code>
+		                </td>
+		                <td>The password for the selected key.</td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <code>keystore-url</code>
+		                </td>
+		                <td>
+		                    <code>xs:string</code>
+		                </td>
+		                <td>The URL of the keystore. If the URL is not correct, this is an error 
+		                    <bibref ref="error.keystoreUrl"/>. If the 
+					user has no acces to the keystore,
+				this is an error 
+		                    <bibref ref="error.deniedKeystore" />.
+		                </td>
+		            </tr>
+		        </tbody>
+		    </table>
+				"digital-certificate" :=
+				map {
+				"keystore-type" := "JKS",
+				"keystore-password" := "password",
+				"key-alias" := "alias",
+				"private-key-password" := "password",
+				"keystore-url" := "/db/mykeystore"
+				}
+				
+		    <p>TBD.</p>
+		    <section>
+		        <h3>The 
+		            <code>crypto:generate-certificate</code> function
+		        </h3>
+		        <p>This function generates a digital certificate.</p>
+		    </section>
+		    <section>
+		        <h3>The 
+		            <code>crypto:generate-self-signed-certificate</code> function
+		        </h3>
+		        <p>This function generates, for development purposes, a self signed digital certificate.
+				TODO: To be developed, if such function is of any use.</p>
+		    </section>
+		    <section>
+		        <h3>The 
+		            <code>crypto:validate-certificate</code> function
+		        </h3>
+		        <p>This function validates a digital certificate.</p>
+		    </section>
+		    <section>
+		        <h3>The 
+		            <code>crypto:parse-certificate</code> function
+		        </h3>
+		        <p>This function parses a digital certificate.</p>
+		    </section>
+		    <section>
+		        <h3>The 
+		            <code>crypto:generate-certification-path</code> function
+		        </h3>
+		        <p>This function validates the certification path for a digital certificate.</p>
+		    </section>
+		    <section>
+		        <h3>The 
+		            <code>crypto:validate-certification-path</code> function
+		        </h3>
+		        <p>This function validates the certification path for a digital certificate.</p>
+		    </section>
+		    <section>
+		        <h3>The 
+		            <code>crypto:generate-certification-request</code> function
+		        </h3>
+		        <p>This function generates a certificate signing request, in order to apply for a digital
+				identity certificate, which is to be issued by a Certificate Authority .</p>
+		    </section>
+		    <section>
+		        <h3>The 
+		            <code>crypto:validate-certification-request</code> function
+		        </h3>
+		        <p>This function validates a certificate signing request.</p>
+		    </section>
+		    <section>
+		        <h3>The 
+		            <code>crypto:validate-certificate-revocation-list</code> function
+		        </h3>
+		        <p>This function validates a certificate revocation list.</p>
+		    </section>
+		</section>
+				
 		<section>
 		    <h2>Secure Storing of Sensitive Keying and Data Material</h2>
 		    <p>A secure storage is a collection of CRLs, cryptographic keys, cryptographic certificates, cryptographic certificate 
@@ -1925,162 +2166,6 @@ map {
 		            <code>crypto:list-trusted-certificate-authorities</code> function
 		        </h3>
 		        <p>This function lists the most-trusted certificate authorities in a secure store.</p>
-		    </section>
-		</section>
-		
-		<section>
-		    <h2>Digital Certificates</h2>
-		    <tr>
-		        <td>
-		            <code>digital-certificate</code>
-		        </td>
-		        <td>
-		            <code>map(xs:string, xs:string)</code>
-		        </td>
-		        <td>The digital certificate to be used for signing the references. If this parameter is missing, an auto-generated 
-					key pair will be used. The
-				components of this parameter are given in the table 
-		            <bibref ref="digital-certificate-parameter-components" /> below.(Optional)
-		        </td>
-		    </tr>
-		    <table id="digital-certificate-parameter-components" border="1" frame="border">
-		        <caption>Components of the 
-		            <code>digital-certificate</code> parameter
-		        </caption>
-		        <thead>
-		            <tr>
-		                <th>Key (as 
-		                    <code>xs:string</code>)
-		                </th>
-		                <th>Value</th>
-		                <th>Meaning</th>
-		            </tr>
-		        </thead>
-		        <tbody>
-		            <tr>
-		                <td>
-		                    <code>keystore-type</code>
-		                </td>
-		                <td>
-		                    <code>xs:string</code>
-		                </td>
-		                <td>The keystore type. If the type is not supported, this is an error 
-		                    <bibref ref="error.keystoreType" />.
-		                </td>
-		            </tr>
-		            <tr>
-		                <td>
-		                    <code>keystore-password</code>
-		                </td>
-		                <td>
-		                    <code>xs:string</code>
-		                </td>
-		                <td>The keystore's password. If the keystore cannot be loaded or the password is incorrect, this is an error 
-		                    <bibref 
-					ref="error.readKeystore" />.
-		                </td>
-		            </tr>
-		            <tr>
-		                <td>
-		                    <code>key-alias</code>
-		                </td>
-		                <td>
-		                    <code>xs:string</code>
-		                </td>
-		                <td>The alias for the key pair used for signing. If no key pair exists for this alias, this is an error 
-		                    <bibref ref="error.aliasKey"/>.
-		                </td>
-		            </tr>
-		            <tr>
-		                <td>
-		                    <code>private-key-password</code>
-		                </td>
-		                <td>
-		                    <code>xs:string</code>
-		                </td>
-		                <td>The password for the selected key.</td>
-		            </tr>
-		            <tr>
-		                <td>
-		                    <code>keystore-url</code>
-		                </td>
-		                <td>
-		                    <code>xs:string</code>
-		                </td>
-		                <td>The URL of the keystore. If the URL is not correct, this is an error 
-		                    <bibref ref="error.keystoreUrl"/>. If the 
-					user has no acces to the keystore,
-				this is an error 
-		                    <bibref ref="error.deniedKeystore" />.
-		                </td>
-		            </tr>
-		        </tbody>
-		    </table>
-				"digital-certificate" :=
-				map {
-				"keystore-type" := "JKS",
-				"keystore-password" := "password",
-				"key-alias" := "alias",
-				"private-key-password" := "password",
-				"keystore-url" := "/db/mykeystore"
-				}
-				
-		    <p>TBD.</p>
-		    <section>
-		        <h3>The 
-		            <code>crypto:generate-certificate</code> function
-		        </h3>
-		        <p>This function generates a digital certificate.</p>
-		    </section>
-		    <section>
-		        <h3>The 
-		            <code>crypto:generate-self-signed-certificate</code> function
-		        </h3>
-		        <p>This function generates, for development purposes, a self signed digital certificate.
-				TODO: To be developed, if such function is of any use.</p>
-		    </section>
-		    <section>
-		        <h3>The 
-		            <code>crypto:validate-certificate</code> function
-		        </h3>
-		        <p>This function validates a digital certificate.</p>
-		    </section>
-		    <section>
-		        <h3>The 
-		            <code>crypto:parse-certificate</code> function
-		        </h3>
-		        <p>This function parses a digital certificate.</p>
-		    </section>
-		    <section>
-		        <h3>The 
-		            <code>crypto:generate-certification-path</code> function
-		        </h3>
-		        <p>This function validates the certification path for a digital certificate.</p>
-		    </section>
-		    <section>
-		        <h3>The 
-		            <code>crypto:validate-certification-path</code> function
-		        </h3>
-		        <p>This function validates the certification path for a digital certificate.</p>
-		    </section>
-		    <section>
-		        <h3>The 
-		            <code>crypto:generate-certification-request</code> function
-		        </h3>
-		        <p>This function generates a certificate signing request, in order to apply for a digital
-				identity certificate, which is to be issued by a Certificate Authority .</p>
-		    </section>
-		    <section>
-		        <h3>The 
-		            <code>crypto:validate-certification-request</code> function
-		        </h3>
-		        <p>This function validates a certificate signing request.</p>
-		    </section>
-		    <section>
-		        <h3>The 
-		            <code>crypto:validate-certificate-revocation-list</code> function
-		        </h3>
-		        <p>This function validates a certificate revocation list.</p>
 		    </section>
 		</section>
 		
