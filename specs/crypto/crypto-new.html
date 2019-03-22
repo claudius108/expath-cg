@@ -224,13 +224,26 @@
 				XML Digital Signature, to encryption and decryption, to hashing and digesting of messages, etc.
 			</p>
 			<p>
-				It has been designed to be compatible via [[!XPATH-31]] with [[!XQUERY-31]], and [[!XSLT-30]]. It should also be
-				suitable for any other language which hosts XPath 3.1, such as [[!XPROC]].
+				It has been designed to be compatible via
+				<a href="#xpath-31">[XML Path Language (XPath) 3.1]</a>
+				with
+				<a href="#xquery-31">[XQuery 3.1: An XML Query Language]</a>
+				, and
+				<a href="#xslt-30">[XSL Transformations (XSLT) Version 3.0]</a>
+				. It should also be suitable for any other language which hosts XPath 3.1, such as
+				<a href="https://www.w3.org/TR/xproc/">[XProc]</a>
+				.
 			</p>
 			<p>
-				The functions are defined based upon the datatypes defined in [[!xmlschema-2]] and [[!xpath-datamodel-31]]. Also,
-				the functions are defined for nodes and node sequences as defined in [[!xpath-datamodel-31]] and are following the
-				good practices inferred from [[!xpath-functions-31]].
+				The functions are defined based upon the datatypes defined in
+				<a href="#xmlschema-2">[XML Schema Part 2: Datatypes Second Edition]</a>
+				and
+				<a href="#xpath-datamodel-31">[XQuery and XPath Data Model (XDM) 3.1]</a>
+				. Also, the functions are defined for nodes and node sequences as defined in
+				<a href="#xpath-datamodel-31">[XQuery and XPath Data Model (XDM) 3.1]</a>
+				and are following the good practices inferred from
+				<a href="#xpath-functions-31">F&amp;O version 3.1</a>
+				.
 			</p>
 		</section>
 
@@ -433,10 +446,146 @@
 			the cryptographic data. They can be implemented
 		using software, hardware, or both.</p>
 		    <section>
-		        <h3>The 
-		            <code>crypto:list-providers</code> function
-		        </h3>
-		        <p>This function lists the available cryptographic providers.</p>
+				<h3>crypto:list-providers</h3>
+		        <dl>
+					<dt class="label">Summary</dt>
+					<dd>
+						<p>Lists the available cryptographic providers.</p>
+					</dd>		        
+					<dt class="label">Signatures</dt>
+					<dd>
+						<div class="proto">
+							<table class="proto">
+								<tbody>
+									<tr>
+										<td rowspan="3">
+											<code class="function">crypto:list-providers</code>
+											(
+										</td>
+										<td>
+											)
+											<code class="as"> as </code>
+											<code class="return-type">map(*)</code>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="proto">
+							<table class="proto">
+								<tbody>
+									<tr>
+										<td rowspan="3">
+											<code class="function">crypto:list-providers</code>
+											(
+										</td>
+										<td>
+											<code class="arg">$cryptographic-service</code>
+										</td>
+										<td>
+											<code class="as"> as </code>
+											<code class="type">xs:string</code>
+										</td>
+										<td>
+											)
+											<code class="as"> as </code>
+											<code class="return-type">map(*)</code>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="proto">
+							<table class="proto">
+								<tbody>
+									<tr>
+										<td rowspan="3">
+											<code class="function">crypto:list-providers</code>
+											(
+										</td>
+										<td>
+											<code class="arg">$cryptographic-service</code>
+										</td>
+										<td>
+											<code class="as"> as </code>
+											<code class="type">xs:string</code>
+											,
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<code class="arg">$algorithm</code>
+										</td>
+										<td>
+											<code class="as"> as </code>
+											<code class="type">xs:string</code>
+											)
+											<code class="as"> as </code>
+											<code class="return-type">map(*)</code>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>						
+						
+						
+					</dd>		        
+					<dt class="label">Properties</dt>
+					<dd>
+						<p>
+							This function is
+							<a title="deterministic" class="termref" data-cite="xpath-functions#dt-deterministic">
+								<span class="arrow">·</span>
+								deterministic
+								<span class="arrow">·</span>
+							</a>
+							,
+							<a title="context-independent" class="termref" data-cite="xpath-functions#dt-context-independent">
+								<span class="arrow">·</span>
+								context-independent
+								<span class="arrow">·</span>
+							</a>
+							, and
+							<a title="focus-independent" class="termref" data-cite="xpath-functions#dt-focus-independent">
+								<span class="arrow">·</span>
+								focus-independent
+								<span class="arrow">·</span>
+							</a>
+							.
+						</p>
+					</dd>
+					<dt class="label">Rules</dt>
+					<dd>
+						<p>The first signature of this function returns all the registered cryptographic providers, along with the cryptographic services
+						each one provides and algorithms for each service.</p>
+						<p>The second signature of this function returns all the registered cryptographic providers that provide the cryptographic service
+						passed as argument, along with the algorithms for each provider.</p>
+						<p>The third signature of this function returns all the registered cryptographic providers that provide the cryptographic service
+						passed as the first argument, by using the algorithm passed as the second argument.</p>
+					</dd>					
+					<dt class="label">Examples</dt>
+					<dd>
+						<div class="example">
+							<p>
+								The following example shows a result for the first signature of the function:
+							</p>
+							<div class="exampleInner">
+								<pre class="small">
+									map {
+									"stylesheet-location" : "render.xsl",
+									"source-node" : fn:doc('test.xml')
+									}
+								</pre>
+							</div>
+						</div>
+					</dd>					
+					
+							        
+		        
+		        
+		        
+		        
+		        </dl>
 		        <eg>
 		            <spec:function>crypto:list-providers</spec:function>() as 
 		            <spec:type>element(crypto:provider-list)</spec:type>
@@ -597,7 +746,7 @@
 									</tr>
 									<tr>
 										<td>
-											<code class="arg">$algorithm </code>
+											<code class="arg">$algorithm</code>
 										</td>
 										<td>
 											<code class="as"> as </code>
@@ -629,7 +778,7 @@
 									</tr>
 									<tr>
 										<td>
-											<code class="arg">$algorithm </code>
+											<code class="arg">$algorithm</code>
 										</td>
 										<td>
 											<code class="as"> as </code>
@@ -825,7 +974,7 @@
 							</tr>
 							<tr>
 								<td>
-									<code class="arg">$algorithm </code>
+									<code class="arg">$algorithm</code>
 								</td>
 								<td>
 									<code class="as"> as </code>
@@ -867,7 +1016,7 @@
 							</tr>
 							<tr>
 								<td>
-									<code class="arg">$algorithm </code>
+									<code class="arg">$algorithm</code>
 								</td>
 								<td>
 									<code class="as"> as </code>
@@ -877,7 +1026,7 @@
 							</tr>
 							<tr>
 								<td>
-									<code class="arg">$encoding </code>
+									<code class="arg">$encoding</code>
 								</td>
 								<td>
 									<code class="as"> as </code>
